@@ -5,6 +5,11 @@
     position: relative;
     width: 800px;
 }
+#logo {
+    position: absolute;
+    left: 350px;
+    top: 140px;
+}
 #sfthumb {
     position: absolute;
     right: 0px;
