@@ -5,8 +5,8 @@
 <title>Mission Chinese Food</title> 
  
 <meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" /> 
-<meta name="description" content="Mission Chinese Food serves Americanized Oriental Food and has locations in SF and NY." /> 
-<meta name="keywords" content="Mission Chinese Food, chinese food, chinese cuisine, asian food, asian cuisine, oriental food, oriental cuisine, mapo tofu, Anthony Myint, Danny Bowien, Mission Street Food, charity, SF Food Bank, San Francisco, Mission, Lung Shan, LES, NY" /> 
+<meta name="description" content="Mission Chinese Food serves Americanized Oriental Food and has locations in San Francisco and New York." /> 
+<meta name="keywords" content="Mission Chinese Food, chinese food, chinese cuisine, asian food, asian cuisine, oriental food, oriental cuisine, mapo tofu, Anthony Myint, Danny Bowien, Mission Street Food, charity, SF Food Bank, San Francisco, Mission, Lung Shan, LES, NY, Food Bank for New York City, Food Bank for NYC" /> 
  
 <script type="text/javascript">
 
@@ -34,6 +34,78 @@
     <div id="sfthumb"><a href="/sf/" title="San Francisco location"><img src="/static/img/mcfsf.png" /></a></div>
     <div id="nythumb"><a href="/ny/" title="New York location"><img src="/static/img/mcfny.png" /></a></div>
 </div>
+
+<div id="deathstar"></div>
+
+<script>
+
+var DEATHSTAR_WIDTH = 300;
+
+function random( upperBound ) {
+	return Math.floor( Math.random() * upperBound );
+}
+
+function getHeight() {
+	return random( window.innerHeight ); 
+}
+
+var deathstar = {
+	targetCss: { },
+	el: $( '#deathstar' ),
+    duration: 6000,
+
+	move: function () {
+		this.el.animate( this.targetCss, this.duration, 'linear', rest );
+	},
+
+	setPathFlat: function () {
+		height = getHeight();
+		this.el.offset( { top: height, left: window.innerWidth } ); 
+		this.targetCss = { top: height, left: -DEATHSTAR_WIDTH };
+	},
+
+	setPathSloped: function () {
+		this.el.offset( { top: getHeight(), left: window.innerWidth } ); 
+		this.targetCss = { top: getHeight(), left: -DEATHSTAR_WIDTH };
+	}
+};
+
+function rest() {
+	// start up at a random time
+	setTimeout( 'animate()', random(3000) + 1000 );
+}
+
+function animate() {
+	// decide trajectory
+	odds = random(100);
+	if (odds < 33) deathstar.setPathFlat();
+	else deathstar.setPathSloped();
+
+	deathstar.move();
+}
+
+$('document').ready( function () {
+	if ($.browser.msie) return;
+	if (!deathstar.el) return;
+	deathstar.el.toggle( 
+		function() { $(this).stop(); },
+		function() { animate(); } 
+	);
+	deathstar.el.show();
+	animate();
+
+    var el = $('#logo img');
+    if (el.length) {
+        el.click( function() {
+            var srcs = ['/static/img/mcflogoweb.png', '/static/img/mcflogochinese.png'];
+            var src = el.attr('src');
+            src = (src == srcs[0]) ? srcs[1] : srcs[0];
+            el.attr('src', src);
+        });
+    }
+});
+
+</script>
 
 </body>
 </html>

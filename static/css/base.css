@@ -20,3 +20,11 @@
     left: 130px;
     top: 130px;
 }
+#deathstar { 
+	background:transparent url('/static/img/smalldeathstar.png') no-repeat 0 0;
+	display:none;
+	height:300px;
+	position:absolute; 
+	width:300px;
+}
+
