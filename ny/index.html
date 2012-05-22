@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Mission Chinese Food</title> 
+ 
+<meta http-equiv="content-type" content="application/xhtml+xml; charset=utf-8" /> 
+<meta name="description" content="Mission Chinese Food serves Americanized Oriental Food and is located at Lung Shan Restaurant in the Mission, San Francisco." /> 
+<meta name="keywords" content="Mission Chinese Food, chinese food, chinese cuisine, asian food, asian cuisine, oriental food, oriental cuisine, mapo tofu, Anthony Myint, Danny Bowien, Mission Street Food, charity, SF Food Bank, San Francisco, Mission, Lung Shan" /> 
+ 
+<style>
+
+body { position:relative; padding:0; margin:0; }
+#menu { margin:0 auto; width:881px; }
+#ninja { 
+	position:absolute; 
+	background:transparent url('/static/img/ninja.png') no-repeat 0 0;
+	width:200px;
+	height:150px;
+	display:none;
+}
+
+</style>
+
+<script type="text/javascript">
+
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-17613073-2']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
+
+</head>
+<body>
+
+<div id="menu">
+
+<p><a><img src="http://www.missionchinesefood.com/wp/wp-content/uploads/2010/07/MCFwebsite17.png" alt="" title="MCFwebsite17" width="881" height="2490" class="alignnone size-full wp-image-187" /></a> </p>
+
+</div>
+
+<div id="ninja"></div>
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script>
+
+var NINJA_WIDTH = 150;
+
+function random( upperBound ) {
+	return Math.floor( Math.random() * upperBound );
+}
+
+function getHeight() {
+	return random( window.innerHeight ); 
+}
+
+var ninja = {
+	targetCss: { },
+	el: $( '#ninja' ),
+
+	move: function () {
+		this.el.animate( this.targetCss, 3000, 'linear', rest );
+	},
+
+	setPathFlat: function () {
+		height = getHeight();
+		this.el.offset( { top: height, left: window.innerWidth } ); 
+		this.targetCss = { top: height, left: -NINJA_WIDTH };
+	},
+
+	setPathSloped: function () {
+		this.el.offset( { top: getHeight(), left: window.innerWidth } ); 
+		this.targetCss = { top: getHeight(), left: -NINJA_WIDTH };
+	}
+};
+
+function rest() {
+	// start up at a random time
+	setTimeout( 'animate()', random(3000) + 1000 );
+}
+
+function animate() {
+	// decide trajectory
+	odds = random(100);
+	if (odds > 33) ninja.setPathFlat();
+	else ninja.setPathSloped();
+
+	ninja.move();
+}
+
+$('document').ready( function () {
+	if ($.browser.msie) return;
+	if (!ninja.el) return;
+	ninja.el.toggle( 
+		function() { $(this).stop(); },
+		function() { animate(); } 
+	);
+	ninja.el.show();
+	animate();
+});
+
+</script>
+
+</body>
+</html>

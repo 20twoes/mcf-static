@@ -1,0 +1,17 @@
+#container {
+    background: transparent url('/static/img/mcfmap.png') no-repeat 0 0;
+    height: 533px;
+    margin: 0 auto;
+    position: relative;
+    width: 800px;
+}
+#sfthumb {
+    position: absolute;
+    right: 0px;
+    top: 200px;
+}
+#nythumb {
+    position: absolute;
+    left: 130px;
+    top: 130px;
+}
