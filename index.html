@@ -34,6 +34,11 @@
     <div id="sfthumb"><a href="/sf/" title="San Francisco location"><img src="/static/img/mcfsf.png" /></a></div>
     <div id="nythumb"><a href="/ny/" title="New York location"><img src="/static/img/mcfny.png" /></a></div>
 </div>
+<p id="footer">
+	<span class="red">San Francisco</span> 2234 MISSION ST SF CA 94110 BETWEEN 18TH &amp; 19TH ST
+	<br />
+	<span class="red">New York</span> 154 ORCHARD ST NY NY 10002 BETWEEN RIVINGTON &amp; STANTON ST 
+</p>
 
 <div id="deathstar"></div>
 
@@ -85,15 +90,6 @@ function animate() {
 }
 
 $('document').ready( function () {
-	if ($.browser.msie) return;
-	if (!deathstar.el) return;
-	deathstar.el.toggle( 
-		function() { $(this).stop(); },
-		function() { animate(); } 
-	);
-	deathstar.el.show();
-	animate();
-
     var el = $('#logo img');
     if (el.length) {
         el.click( function() {
@@ -103,6 +99,15 @@ $('document').ready( function () {
             el.attr('src', src);
         });
     }
+
+	if ($.browser.msie) return;
+	if (!deathstar.el) return;
+	deathstar.el.toggle( 
+		function() { $(this).stop(); },
+		function() { animate(); } 
+	);
+	deathstar.el.show();
+	animate();
 });
 
 </script>

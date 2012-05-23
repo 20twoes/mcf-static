@@ -1,3 +1,16 @@
+@font-face {
+	font-family: BlairITCRegular;
+	src: url('/static/fonts/ufonts.com_blair-itc-medium1-webfont.eot');
+	src: url('/static/fonts/ufonts.com_blair-itc-medium1-webfont.eot?#iefix') format('embedded-opentype'),
+	url('/static/fonts/ufonts.com_blair-itc-medium1-webfont.woff') format('woff'),
+	url('/static/fonts/ufonts.com_blair-itc-medium1-webfont.ttf') format('truetype'),
+	url('/static/fonts/ufonts.com_blair-itc-medium1-webfont.svg#BlairITCRegular') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+img {
+	border: 0;
+}
 #container {
     background: transparent url('/static/img/mcfmap.png') no-repeat 0 0;
     height: 533px;
@@ -27,4 +40,15 @@
 	position:absolute; 
 	width:300px;
 }
-
+#footer {
+	color: #111;
+	font-family: BlairITCRegular, Helvetica, sans-serif;
+	font-size: 11px;
+	line-height: 1.5;
+	margin: 0 auto 1em;
+	word-spacing: 2px;
+	text-align: center;
+}
+.red {
+	color: #c23447;
+}
