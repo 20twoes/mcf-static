@@ -12,7 +12,7 @@ img {
 	border: 0;
 }
 #container {
-    background: transparent url('/static/img/mcfmap.png') no-repeat 0 0;
+    background: transparent url('/static/img/mcfmap.jpg') no-repeat 0 0;
     height: 533px;
     margin: 0 auto;
     position: relative;
