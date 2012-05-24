@@ -44,7 +44,7 @@
 
 <script>
 
-var DEATHSTAR_WIDTH = 300;
+var DEATHSTAR_WIDTH = 148;
 
 function random( upperBound ) {
 	return Math.floor( Math.random() * upperBound );
@@ -98,16 +98,22 @@ function Display() {
 		, ny: '/static/img/mcfnybig.png'
 		, sf: '/static/img/mcfsfbig.png'
 	};
+	var src = srcs['logo'];
 
 	var setSrc = function(v) {
 		el.attr('src', v);
 	};
 
+	var updateSrc = function() {
+		 src = el.attr('src');
+	};
+
 	var init = function() {
         el.click( function() {
-			var src = el.attr('src');
+			updateSrc();
             var s = (src == srcs['logo']) ? srcs['logo_chinese'] : srcs['logo'];
 			setSrc(s);
+			updateSrc();
         });
 
 		$('#nythumb').hover( function() {
@@ -126,7 +132,7 @@ function Display() {
 	};
 
 	var showLogo = function() {
-		setSrc(srcs['logo']);
+		setSrc(src);
 	};
 
 	var showNY = function() {
