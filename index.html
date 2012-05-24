@@ -89,16 +89,61 @@ function animate() {
 	deathstar.move();
 }
 
-$('document').ready( function () {
+function Display() {
+	var self = {};
     var el = $('#logo img');
-    if (el.length) {
+	var srcs = {
+		logo: '/static/img/mcflogoweb.png'
+		, logo_chinese: '/static/img/mcflogochinese.png'
+		, ny: '/static/img/mcfnybig.png'
+		, sf: '/static/img/mcfsfbig.png'
+	};
+
+	var setSrc = function(v) {
+		el.attr('src', v);
+	};
+
+	var init = function() {
         el.click( function() {
-            var srcs = ['/static/img/mcflogoweb.png', '/static/img/mcflogochinese.png'];
-            var src = el.attr('src');
-            src = (src == srcs[0]) ? srcs[1] : srcs[0];
-            el.attr('src', src);
+			var src = el.attr('src');
+            var s = (src == srcs['logo']) ? srcs['logo_chinese'] : srcs['logo'];
+			setSrc(s);
         });
-    }
+
+		$('#nythumb').hover( function() {
+				showNY();
+			},
+			function() {
+				showLogo();
+		});
+
+		$('#sfthumb').hover( function() {
+				showSF();
+			},
+			function() {
+				showLogo();
+		});
+	};
+
+	var showLogo = function() {
+		setSrc(srcs['logo']);
+	};
+
+	var showNY = function() {
+		setSrc(srcs['ny']);
+	};
+
+	var showSF = function() {
+		setSrc(srcs['sf']);
+	};
+
+	if (el.length) init();
+
+	return self;
+}
+
+$('document').ready( function () {
+	Display();
 
 	if ($.browser.msie) return;
 	if (!deathstar.el) return;
