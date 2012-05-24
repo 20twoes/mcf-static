@@ -36,9 +36,9 @@ img {
 #deathstar { 
 	background:transparent url('/static/img/smalldeathstar.png') no-repeat 0 0;
 	display:none;
-	height:300px;
+	height:144px;
 	position:absolute; 
-	width:300px;
+	width:148px;
 }
 #footer {
 	color: #111;
