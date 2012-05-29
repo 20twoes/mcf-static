@@ -100,21 +100,19 @@ function Display() {
 	};
 	var src = srcs['logo'];
 
-	var setSrc = function(v) {
-		el.attr('src', v);
-	};
-
-	var updateSrc = function() {
-		 src = el.attr('src');
-	};
-
 	var init = function() {
-        el.click( function() {
-			updateSrc();
-            var s = (src == srcs['logo']) ? srcs['logo_chinese'] : srcs['logo'];
-			setSrc(s);
-			updateSrc();
-        });
+		var img;
+		for (var i in srcs){
+			img = new Image();
+			img.src = srcs[i];
+		}
+
+		el.hover( function() {
+				showChinese();
+			},
+			function() {
+				showLogo();
+		});
 
 		$('#nythumb').hover( function() {
 				showNY();
@@ -132,15 +130,19 @@ function Display() {
 	};
 
 	var showLogo = function() {
-		setSrc(src);
+		el.attr('src', srcs['logo']);
+	};
+
+	var showChinese = function() {
+		el.attr('src', srcs['logo_chinese']);
 	};
 
 	var showNY = function() {
-		setSrc(srcs['ny']);
+		el.attr('src', srcs['ny']);
 	};
 
 	var showSF = function() {
-		setSrc(srcs['sf']);
+		el.attr('src', srcs['sf']);
 	};
 
 	if (el.length) init();
