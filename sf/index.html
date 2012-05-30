@@ -15,8 +15,8 @@ body { position:relative; padding:0; margin:0; }
 #ninja { 
 	position:absolute; 
 	background:transparent url('/static/img/ninja.png') no-repeat 0 0;
-	width:200px;
-	height:150px;
+	width:150px;
+	height:112px;
 	display:none;
 }
 
@@ -68,12 +68,12 @@ var ninja = {
 
 	setPathFlat: function () {
 		height = getHeight();
-		this.el.offset( { top: height, left: window.innerWidth } ); 
+		this.el.offset( { top: height, left: window.innerWidth - NINJA_WIDTH - 20 } ); 
 		this.targetCss = { top: height, left: -NINJA_WIDTH };
 	},
 
 	setPathSloped: function () {
-		this.el.offset( { top: getHeight(), left: window.innerWidth } ); 
+		this.el.offset( { top: getHeight(), left: window.innerWidth - NINJA_WIDTH - 20 } );
 		this.targetCss = { top: getHeight(), left: -NINJA_WIDTH };
 	}
 };

@@ -65,12 +65,12 @@ var deathstar = {
 
 	setPathFlat: function () {
 		height = getHeight();
-		this.el.offset( { top: height, left: window.innerWidth } ); 
+		this.el.offset( { top: height, left: window.innerWidth - DEATHSTAR_WIDTH } );
 		this.targetCss = { top: height, left: -DEATHSTAR_WIDTH };
 	},
 
 	setPathSloped: function () {
-		this.el.offset( { top: getHeight(), left: window.innerWidth } ); 
+		this.el.offset( { top: getHeight(), left: window.innerWidth - DEATHSTAR_WIDTH } );
 		this.targetCss = { top: getHeight(), left: -DEATHSTAR_WIDTH };
 	}
 };
