@@ -1,0 +1,146 @@
+---
+layout: default
+meta_description: Mission Chinese Food serves Americanized Oriental Food and has locations in San Francisco and New York.
+body_class: landing-page
+---
+<div class="container">
+    <div id="logo"><img src="/static/img/mcflogoweb.png" /></div>
+    <div id="sfthumb"><a href="/sf/" title="San Francisco location"><img src="/static/img/mcfsf.png" /></a></div>
+    <div id="nythumb"><a href="http://www.mcfny.com/" title="New York location"><img src="/static/img/mcfny.png" /></a></div>
+</div>
+
+<div class="footer"><p>
+    <p>
+        <span class="red">San Francisco</span> 2234 MISSION ST SF CA 94110 BETWEEN 18TH &amp; 19TH ST
+        <br>
+        <span class="red">New York</span> 171 EAST BROADWAY (NOW OPEN!)
+    </p>
+    <br>
+    <div>
+        <a href="/ny/apply.html" class="btn" title="Work at MCFNY">Work at MCFNY</a>
+    </div>
+</p></div>
+
+<div id="deathstar"></div>
+
+<script>
+
+var DEATHSTAR_WIDTH = 148;
+
+function random( upperBound ) {
+	return Math.floor( Math.random() * upperBound );
+}
+
+function getHeight() {
+	return random( window.innerHeight ); 
+}
+
+var deathstar = {
+	targetCss: { },
+	el: $( '#deathstar' ),
+    duration: 12000,
+
+	move: function () {
+		this.el.animate( this.targetCss, this.duration, 'linear', rest );
+	},
+
+	setPathFlat: function () {
+		height = getHeight();
+		this.el.offset( { top: height, left: window.innerWidth - DEATHSTAR_WIDTH } );
+		this.targetCss = { top: height, left: -DEATHSTAR_WIDTH };
+	},
+
+	setPathSloped: function () {
+		this.el.offset( { top: getHeight(), left: window.innerWidth - DEATHSTAR_WIDTH } );
+		this.targetCss = { top: getHeight(), left: -DEATHSTAR_WIDTH };
+	}
+};
+
+function rest() {
+	// start up at a random time
+	setTimeout( 'animate()', random(3000) + 1000 );
+}
+
+function animate() {
+	// decide trajectory
+	odds = random(100);
+	if (odds < 33) deathstar.setPathFlat();
+	else deathstar.setPathSloped();
+
+	deathstar.move();
+}
+
+function Display() {
+	var self = {};
+    var el = $('#logo img');
+	var srcs = {
+		logo: '/static/img/mcflogoweb.png'
+		, logo_chinese: '/static/img/mcflogochinese.png'
+		, ny: '/static/img/mcfnybig.png'
+		, sf: '/static/img/mcfsfbig.png'
+	};
+	var src = srcs['logo'];
+
+	var init = function() {
+		var img;
+		for (var i in srcs){
+			img = new Image();
+			img.src = srcs[i];
+		}
+
+		el.hover( function() {
+				showChinese();
+			},
+			function() {
+				showLogo();
+		});
+
+		$('#nythumb').hover( function() {
+				showNY();
+			},
+			function() {
+				showLogo();
+		});
+
+		$('#sfthumb').hover( function() {
+				showSF();
+			},
+			function() {
+				showLogo();
+		});
+	};
+
+	var showLogo = function() {
+		el.attr('src', srcs['logo']);
+	};
+
+	var showChinese = function() {
+		el.attr('src', srcs['logo_chinese']);
+	};
+
+	var showNY = function() {
+		el.attr('src', srcs['ny']);
+	};
+
+	var showSF = function() {
+		el.attr('src', srcs['sf']);
+	};
+
+	if (el.length) init();
+
+	return self;
+}
+
+$('document').ready( function () {
+	Display();
+
+	if (!deathstar.el) return;
+	deathstar.el.toggle( 
+		function() { $(this).stop(); },
+		function() { animate(); } 
+	);
+	deathstar.el.show();
+	animate();
+});
+
+</script>

@@ -1,0 +1,64 @@
+---
+layout: default
+---
+{{ content }}
+
+<div id="ninja"></div>
+
+<script>
+
+var NINJA_WIDTH = 150;
+
+function random( upperBound ) {
+	return Math.floor( Math.random() * upperBound );
+}
+
+function getHeight() {
+	return random( window.innerHeight ); 
+}
+
+var ninja = {
+	targetCss: { },
+	el: $( '#ninja' ),
+
+	move: function () {
+		this.el.animate( this.targetCss, 3000, 'linear', rest );
+	},
+
+	setPathFlat: function () {
+		height = getHeight();
+		this.el.offset( { top: height, left: window.innerWidth - NINJA_WIDTH - 20 } ); 
+		this.targetCss = { top: height, left: -NINJA_WIDTH };
+	},
+
+	setPathSloped: function () {
+		this.el.offset( { top: getHeight(), left: window.innerWidth - NINJA_WIDTH - 20 } ); 
+		this.targetCss = { top: getHeight(), left: -NINJA_WIDTH };
+	}
+};
+
+function rest() {
+	// start up at a random time
+	setTimeout( 'animate()', random(3000) + 1000 );
+}
+
+function animate() {
+	// decide trajectory
+	odds = random(100);
+	if (odds > 33) ninja.setPathFlat();
+	else ninja.setPathSloped();
+
+	ninja.move();
+}
+
+$('document').ready( function () {
+	if (!ninja.el) return;
+	ninja.el.toggle( 
+		function() { $(this).stop(); },
+		function() { animate(); } 
+	);
+	ninja.el.show();
+	animate();
+});
+
+</script>

@@ -1,0 +1,2 @@
+exclude: ['fabric', 'venv', '.git', 'deploy.sh', 'build.sh']
+

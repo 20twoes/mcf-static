@@ -1,0 +1,29 @@
+---
+layout: ninja
+meta_description: Mission Chinese Food serves Americanized Oriental Food and is located at Lung Shan Restaurant in the Mission, San Francisco.
+body_class: sf
+---
+<div class="header">&nbsp;</div>
+<div class="main-content">
+    <div class="container">
+        <div class="section">
+            <img class="foodbank" src="/static/img/sffoodbank.png" alt="We donate $0.75 from each entree.  Since July 2010, we've raised $180,542 for the San Francisco Food Bank/Marin Food Bank."  width="527" height="131" />
+            <a class="order-button" href="/sf/delivery/"><img src="/static/img/orderbutton.png" width="289" height="130" /></a>
+        </div>
+        <div class="menu-wrap section clearfix">
+            <img class="menu-img" src="/static/img/sfmenu.png" alt="Menu"  width="890" />
+            <script id="setmore_script" type="text/javascript" src="https://my.setmore.com/js/iframe/setmore_iframe.js"></script>
+            <a id="Setmore_button_iframe" style="float:none" href="https://my.setmore.com/shortBookingPage/27d05cdd-a165-481b-8af9-70c24e3055d4">
+                <img class="reservations-btn" src="/static/img/sfreservationbutton.png" alt="Make a reservation" />
+            </a>
+        </div>
+    </div>
+</div>
+
+<script type="text/javascript">
+    $('#Setmore_button_iframe').click(function() {
+        mixpanel.track("click reservation link", {
+            "referrer": document.referrer
+        });
+    });
+</script>
